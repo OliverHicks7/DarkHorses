@@ -30,7 +30,7 @@ def main(req: HttpRequest) -> HttpResponse:
     cursor = conn.cursor()
 
     # Execute query
-    cursor.execute("SELECT id FROM comments")
+    cursor.execute("SELECT comment_id FROM comments")
     columns = [column[0] for column in cursor.description]
     rows = cursor.fetchall()
 
@@ -40,7 +40,7 @@ def main(req: HttpRequest) -> HttpResponse:
     sentiment = ''.join([random.choice(alphabet_space) for i in range(random.randint(20,100))])
 
 
-    cursor.execute("INSERT into comments (id, value, sentiment) VALUES (?,?,?)"(next_id, comment_value, sentiment))
+    cursor.execute("INSERT into comments (product_id, comment_id, value, sentiment) VALUES (?,?,?)"(1, next_id, comment_value, sentiment))
 
     conn.commit()
     # Clean up
