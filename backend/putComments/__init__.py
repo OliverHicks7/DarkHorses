@@ -44,4 +44,5 @@ def main(req: HttpRequest) -> HttpResponse:
 
     # Clean up
     cursor.close()
+    cursor.close()  
     conn.close()
