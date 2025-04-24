@@ -1,10 +1,10 @@
 // Main JavaScript file
 
-import { fetchItems } from './api.js';
+import { fetchItemsFromFunction1 } from './api.js';
 
 async function renderItems() {
     const itemList = document.getElementById('item-list'); // Ensure this matches the ID in your HTML
-    const items = await fetchItems();
+    const items = await fetchItemsFromFunction1();
 
     if (items.length === 0) {
         itemList.innerHTML = '<li>No items found</li>';
