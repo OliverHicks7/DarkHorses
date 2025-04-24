@@ -11,17 +11,23 @@ DB_SERVER = c.DB_SERVER
 DB_DATABASE = c.DB_DATABASE
 DB_USERNAME = c.DB_USERNAME
 DB_PASSWORD = c.DB_PASSWORD
+AZURE_TENANT_NAME = c.AZURE_TENANT_NAME
 
 CONNECTION_STRING = (
-    'Driver={ODBC Driver 17 for SQL Server};'
-    f'Server={DB_SERVER};'
-    f'Database={DB_DATABASE};'
-    f'Uid={DB_USERNAME};'
-    f'Pwd={DB_PASSWORD};'
-    'Encrypt=yes;'
-    'TrustServerCertificate=no;'
-    'Connection Timeout=30;'
+    "Driver={ODBC Driver 18 for SQL Server};"
+    f"Server={DB_SERVER};"
+    f"Database={DB_DATABASE};"
+    "Authentication=ActiveDirectoryPassword;"
+    f"Uid={DB_USERNAME}@{AZURE_TENANT_NAME};"
+    f"Pwd={DB_PASSWORD};"
+    "Encrypt=yes;"
+    "TrustServerCertificate=no;"
+    "Connection Timeout=30;"
 )
+# db jdbc string: jdbc:sqlserver://dark-horses.database.windows.net:1433;
+# database=dark-horses;user={your_username_here};password={your_password_here};
+# encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;
+# loginTimeout=30;authentication=ActiveDirectoryPassword
 
 def get_db_connection():
     """

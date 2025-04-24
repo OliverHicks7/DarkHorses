@@ -5,5 +5,6 @@
 
 DB_SERVER = "dark-horses.database.windows.net"
 DB_DATABASE = "dark-horses"
-DB_USERNAME = "team11.hacker04@lbgreboot2025outlook.onmicrosoft.com"
+DB_USERNAME = "team11.hacker04"
 DB_PASSWORD = "!BgH4ckath0n"
+AZURE_TENANT_NAME = "lbgreboot2025outlook.onmicrosoft.com"
