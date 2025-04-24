@@ -27,8 +27,16 @@ def main(req: HttpRequest) -> HttpResponse:
         conn = pyodbc.connect(CONNECTION_STRING)
         cursor = conn.cursor()
 
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            req_body = {}
+
+        product_id = req.params.get('product_id') or req_body.get('product_id')
+
         # Execute query
-        cursor.execute("SELECT * FROM comments")
+        sql = "SELECT * FROM comments WHERE product_id = ?"
+        cursor.execute(sql, product_id)
         columns = [column[0] for column in cursor.description]
         rows = cursor.fetchall()
 
