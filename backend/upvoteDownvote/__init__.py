@@ -5,7 +5,17 @@ import pyodbc
 import azure.functions as func
 
 # Database connection string (store this in Azure Function App settings as SQL_CONN_STR)
-CONN_STR = os.getenv("SQL_CONN_STR")
+CONN_STR = (
+    "Driver={ODBC Driver 18 for SQL Server};"
+    f"Server={os.getenv('DB_SERVER')};"
+    f"Database={os.getenv('DB_DATABASE')};"
+    "Authentication=ActiveDirectoryPassword;"
+    f"Uid={os.getenv('DB_USERNAME')}@{os.getenv('AZURE_TENANT_NAME')};"
+    f"Pwd={os.getenv('DB_PASSWORD')};"
+    "Encrypt=yes;"
+    "TrustServerCertificate=no;"
+    "Connection Timeout=30;"
+)
 
 # Helper to get a DB connection
 def get_db_connection():
