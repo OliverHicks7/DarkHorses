@@ -3,6 +3,8 @@ import pyodbc
 import os
 import json
 from azure.functions import HttpRequest, HttpResponse
+from dotenv import load_dotenv
+load_dotenv()
 
 # Database connection string
 CONNECTION_STRING = (
