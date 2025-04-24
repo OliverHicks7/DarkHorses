@@ -58,6 +58,7 @@ def main(req: HttpRequest) -> HttpResponse:
     except ValueError:
         req_body = {}
 
+    product_id = req.params.get('product_id') or req_body.get('product_id')
     comment_value = req.params.get('comment_value') or req_body.get('comment_value')
 
     response = client.chat.completions.create(
@@ -84,7 +85,7 @@ def main(req: HttpRequest) -> HttpResponse:
 
     cursor.execute(
         "INSERT INTO comments (product_id, comment_id, [value], sentiment) VALUES (?,?,?,?)",
-        (1, next_id, comment_value, sentiment)
+        (product_id, next_id, comment_value, sentiment)
     )
 
     conn.commit()
