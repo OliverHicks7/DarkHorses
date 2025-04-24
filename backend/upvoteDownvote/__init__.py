@@ -46,8 +46,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # Use OUTPUT clause to get the updated score in one round-trip
         sql = (
             "UPDATE products "
-            "SET score = score + ? "
-            "OUTPUT INSERTED.score "
+            "SET likes = likes + ? "
+            "OUTPUT INSERTED.likes "
             "WHERE id = ?"
         )
         cursor.execute(sql, (delta, product_id))
