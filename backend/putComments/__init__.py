@@ -40,7 +40,7 @@ def main(req: HttpRequest) -> HttpResponse:
     sentiment = ''.join([random.choice(alphabet_space) for i in range(random.randint(20,100))])
 
 
-    cursor.execute("INSERT into comments (id, value, sentiment) VALUES ({},{},{})".format(next_id, comment_value, sentiment))
+    cursor.execute("INSERT into comments (id, value, sentiment) VALUES (?,?,?)"(next_id, comment_value, sentiment))
 
     conn.commit()
     # Clean up
