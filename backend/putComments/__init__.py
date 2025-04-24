@@ -42,7 +42,7 @@ def main(req: HttpRequest) -> HttpResponse:
 
     cursor.execute("INSERT into comments (id, value, sentiment) VALUES ({},{},{})".format(next_id, comment_value, sentiment))
 
+    conn.commit()
     # Clean up
-    cursor.close()
     cursor.close()  
     conn.close()
