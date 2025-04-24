@@ -1,14 +1,14 @@
 // API calls to Azure Functions
 
 // PLACE HOLDER TO BE REPLACED WITH YOUR AZURE FUNCTION URL
-const baseApiUrl = 'https://<your-function-app>.azurewebsites.net/api'; // Replace with BASE URL
+const baseApiUrl = 'http://localhost:7071/api'; // Replace with BASE URL
 
-async function fetchItemsFromFunction1() {
-    const url = `${baseApiUrl}/HttpTrigger1`;
+async function getProducts() {
+    const url = `${baseApiUrl}/getProducts`;
     return fetchData(url);
 }
 
-async function fetchItems(apiUrl) {
+async function fetchData(apiUrl) {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -22,4 +22,4 @@ async function fetchItems(apiUrl) {
     }
 }
 
-export { fetchItemsFromFunction1 };
+export { getProducts };
